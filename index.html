@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Mock</title>
+  <meta name="description" content="---">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta property="og:url" content="--" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="---" />
+  <meta property="og:site_name" content="mock" />
+  <meta property="og:description" content="--" />
+  <meta property="og:image" content="" />
+  <meta property="og:image:url" content="" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+    /*TODO: remove*/
+
+    .tmp-hide {
+      display: none;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin:0px;
+    }
+
+    .cca-font--regular {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+    }
+
+    .cca-font--bold {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+    /*Dialogs*/
+
+    .cca__alert__wrap {
+      width: calc(100% - 60px);
+      padding: 24px 16px;
+      background: #FFFFFF;
+      box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.50);
+      border-radius: 3px;
+      text-align: center;
+      /*pos:*/
+      position: fixed;
+      bottom: 40px;
+      left: 30px;
+    }
+
+    .cca__alert__icon i {
+      font-size: 40px;
+      color: #212121;
+    }
+
+    .cca__alert__title {
+      margin: 16px 0;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 22px;
+      color: #212121;
+    }
+
+    .cca__alert__subtitle {
+      font-size: 12px;
+      line-height: 14px;
+      color: #212121;
+      margin-bottom: 24px;
+    }
+    /*TODO: Add :hover states and active*/
+
+    .cca__button {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      line-height: 40px;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: #fff;
+      background: #2196F3;
+      border-radius: 3px;
+      padding: 0 30px;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .cca__button:hover {
+      background: #659FFF;
+    }
+
+    .cca__button---flat {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      line-height: 40px;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: #2196F3;
+      padding: 0 30px;
+      display: inline-block;
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
+    }
+
+    .cca__button---flat:hover {
+      color: #659FFF;
+    }
+    /*bottomSheet*/
+
+    .cca-page-content-wrap {
+      padding: 32px 24px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .cca__page-title {
+      font-size: 24px;
+      line-height: 32px;
+      color: #212121;
+      margin-bottom: 16px;
+    }
+
+    .cca__page-subtitle {
+      font-size: 16px;
+      color: #212121;
+      line-height: 22px;
+    }
+
+    .cca__page__slider-wrap {
+      margin: 24px 0;
+      background: #F0F0F0;
+      border-radius: 4px;
+      padding: 24px;
+    }
+
+    .cca__page__slider-title {
+      margin-top: 32px;
+      margin-bottom: 16px;
+      font-size: 32px;
+      color: #212121;
+      line-height: 22px;
+    }
+
+    .cca__page__slider-subtitle {
+      font-size: 12px;
+      line-height: 18px;
+      color: #212121;
+    }
+
+    .cca__page-buttons-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /*Modal*/
+
+    .cca__modal-wrap {
+      position:fixed;
+      top:0px;
+      left:0px;
+      padding: 32px;
+      height:100%;
+      background:#fff;
+    }
+    .cca__modal-back-button i{
+      font-size:24px;
+    }
+    .cca__modal-title {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .cca__modal-conetnt {
+      font-size: 16px;
+      line-height: 24px;
+    }
+    /*desktop styles*/
+
+    @media (min-width: 640px) {
+      .cca__alert__wrap {
+        width: 350px;
+        position: fixed;
+        bottom: 30vh;
+        left: calc(50% - 175px);
+      }
+    }
+  </style>
+  <!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+  <div id="pixi-container">
+  </div>
+  <div class="cca__alert__wrap tmp-hide">
+    <div class="cca__alert__icon"><i class="material-icons">warning</i></div>
+    <div class="cca__alert__title cca-font--regular">A refugee ship was detected 862KM from Tel Aviv-Yafo, Israel</div>
+    <div class="cca__alert__subtitle cca-font--regular">Aegean Sea</br>8.160032, 26.302040</div>
+    <div class="cca__button">OK</div>
+  </div>
+  <div class="cca__alert__wrap tmp-hide">
+    <div class="cca__alert__icon"><i class="material-icons">directions_boat</i></div>
+    <div class="cca__alert__title cca-font--regular">Thanks for donating!</div>
+    <div class="cca__alert__subtitle cca-font--regular">You are currently being redirected to https://cca.co.il</div>
+  </div>
+
+  <div class="cca-page-content-wrap tmp-hide">
+    <div class="cca__page-title cca-font--bold">Donate KBPS Today</div>
+    <div class="cca__page-subtitle cca-font--regular">
+      The people aboard the ship are in dire need of internet. Donating 20% of your bandwidth can save lives.
+    </div>
+    <div class="cca__button---flat">learn more</div>
+
+
+    <div class="cca__page__slider-wrap tmp-hide">
+      <div class="cca__page__slider-title cca-font--regular">233 Kbps</div>
+      <div class="cca__page__slider-subtitle cca-font--regular">25% of your internet speed</div>
+    </div>
+
+    <div class="cca__page-buttons-wrap">
+      <div class="cca__button">OK</div>
+      <div class="cca__button---flat">not now</div>
+    </div>
+  </div>
+
+
+  <div class="cca__modal-wrap tmp-hide">
+     <div class="cca__modal-back-button"><i class="material-icons">arrow_back</i></div>
+    <div class="cca__modal-title cca-font--regular">Section title</div>
+    <div class="cca__modal-conetnt cca-font--regular">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+      irure dolor in reprehenderit in volu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+      ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volu
+    </div>
+
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/GoodBoyDigital/pixi.js/v1.6.1/bin/pixi.js"></script>
+  <script type="text/javascript" src="js/functions.js"></script>
+
+
+</body>
+
+</html>
