@@ -51,7 +51,7 @@ $(document).ready(function () {
     var stage = new PIXI.Stage(0x000000);
     var container = new PIXI.DisplayObjectContainer();
     stage.addChild(container);
-    var loader = new PIXI.AssetLoader(["/images/map.png"]);
+    var loader = new PIXI.AssetLoader(["images/map.png"]);
     loader.onComplete = setup;
     loader.load();
     var displacementFilte, bg;
@@ -80,7 +80,7 @@ $(document).ready(function () {
     }
 
     function setup() {
-        var texture = PIXI.TextureCache["/images/map.png"];
+        var texture = PIXI.TextureCache["images/map.png"];
         bg = new PIXI.Sprite(texture);
         container.addChild(bg);
         // Stretch background
