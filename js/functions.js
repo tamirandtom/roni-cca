@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
     $(".cca__modal-title").click(function () {
         $(this).siblings(".cca__modal-conetnt").slideToggle();
     });
@@ -50,7 +51,7 @@ $(document).ready(function () {
     var stage = new PIXI.Stage(0x000000);
     var container = new PIXI.DisplayObjectContainer();
     stage.addChild(container);
-    var loader = new PIXI.AssetLoader(["../images/background-image.png"]);
+    var loader = new PIXI.AssetLoader(["../images/map.png"]);
     loader.onComplete = setup;
     loader.load();
     var displacementFilte, bg;
@@ -61,17 +62,17 @@ $(document).ready(function () {
             h: window.innerHeight
         }
         if (screensize.w > screensize.h) {
-            var ratio =  screensize.w / screensize.h;
+            var ratio = screensize.w / screensize.h;
             bg.width = screensize.w
             bg.height = ratio * screensize.w;
-            bg.position.y =  -(bg.height - bg.width)/2;
-            
-        } 
+            bg.position.y = -(screensize.w - screensize.h);
+
+        }
         else {
-            var ratio =  screensize.h / screensize.w;
+            var ratio = screensize.h / screensize.w;
             bg.width = ratio * screensize.h;
             bg.height = screensize.h;
-            bg.position.x =  -(bg.width - bg.height)/2;
+            bg.position.x = -(screensize.h - screensize.w)*2;
         }
 
         renderer.resize(screensize.w, screensize.h);
@@ -79,7 +80,7 @@ $(document).ready(function () {
     }
 
     function setup() {
-        var texture = PIXI.TextureCache["../images/background-image.png"];
+        var texture = PIXI.TextureCache["../images/map.png"];
         bg = new PIXI.Sprite(texture);
         container.addChild(bg);
         // Stretch background
