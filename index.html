@@ -31,8 +31,9 @@
     * {
       box-sizing: border-box;
     }
+
     body {
-      margin:0px;
+      margin: 0px;
     }
 
     .cca-font--regular {
@@ -165,16 +166,19 @@
     /*Modal*/
 
     .cca__modal-wrap {
-      position:fixed;
-      top:0px;
-      left:0px;
+      position: fixed;
+      top: 0px;
+      left: 0px;
       padding: 32px;
-      height:100%;
-      background:#fff;
+      height: 100%;
+      width: 100%;
+      background: #fff;
     }
-    .cca__modal-back-button i{
-      font-size:24px;
+
+    .cca__modal-back-button i {
+      font-size: 24px;
     }
+
     .cca__modal-title {
       font-size: 16px;
       line-height: 24px;
@@ -194,7 +198,27 @@
         left: calc(50% - 175px);
       }
     }
+
+    .ui-accordion .ui-accordion-header {
+      display: block;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .ui-accordion .ui-accordion-content {
+      overflow: auto;
+    }
+
+    #pixi-container {
+      z-index: -1;
+      position: fixed;
+    }
   </style>
+  <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <![endif]-->
@@ -204,51 +228,68 @@
 
   <div id="pixi-container">
   </div>
-  <div class="cca__alert__wrap tmp-hide">
+  <div class="cca__alert__wrap" id="innitialAlert">
     <div class="cca__alert__icon"><i class="material-icons">warning</i></div>
     <div class="cca__alert__title cca-font--regular">A refugee ship was detected 862KM from Tel Aviv-Yafo, Israel</div>
     <div class="cca__alert__subtitle cca-font--regular">Aegean Sea</br>8.160032, 26.302040</div>
-    <div class="cca__button">OK</div>
+    <div class="cca__button" id="okButtonDialog">OK</div>
   </div>
-  <div class="cca__alert__wrap tmp-hide">
+  <div class="cca__alert__wrap tmp-hide" id="thankYouMsg">
     <div class="cca__alert__icon"><i class="material-icons">directions_boat</i></div>
     <div class="cca__alert__title cca-font--regular">Thanks for donating!</div>
     <div class="cca__alert__subtitle cca-font--regular">You are currently being redirected to https://cca.co.il</div>
   </div>
-
+    <div class="cca__alert__wrap tmp-hide" id="noDonationMsg">
+    <div class="cca__alert__icon"><i class="material-icons">directions_boat</i></div><br><br>
+    <div class="cca__alert__subtitle cca-font--regular">You are currently being redirected to https://cca.co.il</div>
+  </div>
   <div class="cca-page-content-wrap tmp-hide">
     <div class="cca__page-title cca-font--bold">Donate KBPS Today</div>
     <div class="cca__page-subtitle cca-font--regular">
       The people aboard the ship are in dire need of internet. Donating 20% of your bandwidth can save lives.
     </div>
-    <div class="cca__button---flat">learn more</div>
+    <div class="cca__button---flat" id="learnMoreButton">learn more</div>
 
 
-    <div class="cca__page__slider-wrap tmp-hide">
+    <div class="cca__page__slider-wrap">
       <div class="cca__page__slider-title cca-font--regular">233 Kbps</div>
       <div class="cca__page__slider-subtitle cca-font--regular">25% of your internet speed</div>
     </div>
 
     <div class="cca__page-buttons-wrap">
-      <div class="cca__button">OK</div>
-      <div class="cca__button---flat">not now</div>
+      <div class="cca__button" id="donateButton">OK</div>
+      <div class="cca__button---flat" id="dontDonateButton">not now</div>
     </div>
   </div>
 
 
   <div class="cca__modal-wrap tmp-hide">
-     <div class="cca__modal-back-button"><i class="material-icons">arrow_back</i></div>
-    <div class="cca__modal-title cca-font--regular">Section title</div>
-    <div class="cca__modal-conetnt cca-font--regular">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-      irure dolor in reprehenderit in volu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-      ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volu
+    <div class="cca__modal-back-button"><i class="material-icons" id="backDialog">arrow_back</i></div>
+    <div class="cca__modal-content-unit-wrap">
+      <h3 class="cca__modal-title cca-font--regular">Section title</h3>
+      <div class="cca__modal-conetnt cca-font--regular tmp-hide">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+          aute irure dolor in reprehenderit in volu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volu
+      </div>
+    </div>
+        <div class="cca__modal-content-unit-wrap">
+      <h3 class="cca__modal-title cca-font--regular">Section title</h3>
+      <div class="cca__modal-conetnt cca-font--regular tmp-hide">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+          aute irure dolor in reprehenderit in volu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volu
+      </div>
+    </div>
+     
     </div>
 
+
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="https://cdn.rawgit.com/GoodBoyDigital/pixi.js/v1.6.1/bin/pixi.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
 
