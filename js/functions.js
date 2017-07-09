@@ -74,9 +74,7 @@ $(document).ready(function () {
             bg.height = screensize.h;
             bg.position.x = -(screensize.h - screensize.w)*2;
         }
-
         renderer.resize(screensize.w, screensize.h);
-
     }
 
     function setup() {
@@ -91,6 +89,7 @@ $(document).ready(function () {
         container.filters = [displacementFilter];
         requestAnimFrame(animate);
     }
+    
     // Animate
     function animate() {
         var offset = 0.5;
