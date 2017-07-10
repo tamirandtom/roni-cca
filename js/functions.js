@@ -1,25 +1,40 @@
 $(document).ready(function () {
 
-// slider change
+    // slider change
 
-$('#donationSlider').on("change mousemove", function() {
-    $('.cca__page__slider-title').text($(this).val()+"KBPS");
-    $('.cca__page__slider-subtitle').text(Math.floor((parseInt($(this).val())/1400)*100)+"% of your internet speed");
-});
+    $('#donationSlider').on("change mousemove", function () {
+        $('.cca__page__slider-title').text($(this).val() + "KBPS");
+        $('.cca__page__slider-subtitle').text(Math.floor((parseInt($(this).val()) / 1400) * 100) + "% of your internet speed");
+    });
 
 
-// navigation
+    // navigation
     $(".cca__modal-title").click(function () {
         $(this).siblings(".cca__modal-conetnt").slideToggle();
     });
 
     function exitDialog() {
-        $('.cca__modal-wrap').fadeOut(400);
+        $('#moreDialog').fadeOut(400);
     }
 
     function showDialog() {
-        $('.cca__modal-wrap').fadeIn(400);
+        $('#moreDialog').fadeIn(400);
     }
+
+
+    function exitAboutDialog() {
+        $('#aboutDialog').fadeOut(400);
+        $(".cca__logo").removeClass('tmp-hide');
+
+    }
+
+    function showAboutDialog() {
+        $('#aboutDialog').fadeIn(400);
+        $(".cca__logo").addClass('tmp-hide');
+
+    }
+
+
 
     function showMainPage() {
         $('.cca-page-content-wrap').fadeIn(400);
@@ -30,16 +45,25 @@ $('#donationSlider').on("change mousemove", function() {
     function donateButton() {
         $('.cca-page-content-wrap').fadeOut(400);
         $('#thankYouMsg').fadeIn(400);
+        $('.cca__logo').removeClass('upper');
+
     }
 
     function cancelButton() {
         $('.cca-page-content-wrap').fadeOut(400);
         $('#noDonationMsg').fadeIn(400);
+        $('.cca__logo').removeClass('upper');
+
     }
 
 
     $("#backDialog").on("click", exitDialog);
     $("#learnMoreButton").on("click", showDialog);
+
+    $("#backAboutDialog").on("click", exitAboutDialog);
+    $(".cca__logo").on("click", showAboutDialog);
+
+
     $("#okButtonDialog").on("click", showMainPage);
     $("#dontDonateButton").on("click", cancelButton);
     $("#donateButton").on("click", donateButton);

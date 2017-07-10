@@ -25,6 +25,7 @@
     /*TODO: remove*/
 
     .tmp-hide {
+      /*opacity:0;*/
       display: none;
     }
 
@@ -37,7 +38,7 @@
     }
 
     .cca-surface {
-      backdrop-filter: blur(10px) grayscale(100%);
+      -webkit-backdrop-filter: blur(20px);
       background-image: url(data:image/png;base64,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);
       background-color: rgba(255, 255, 255, 0.9);
     }
@@ -59,13 +60,24 @@
       right: 16px;
       width: 40px;
       height: 40px;
-      background: #f0f;
+      text-align:center;
+      /*background: #f0f;*/
       transition: all 1s ease-in-out;
-      opacity: 0.7;
+      opacity: 0.2;
+      z-index:1;
     }
-
     .cca__logo.upper {
       opacity: 1;
+    }
+
+    .cca__web-title {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      width: 100%;
+      height: 64px;
+      line-height:64px;
+      text-align:center;
     }
     /*Dialogs*/
 
@@ -109,7 +121,7 @@
       text-transform: uppercase;
       font-size: 14px;
       color: #fff;
-      background: #2196F3;
+      background: #3F51B5;
       border-radius: 3px;
       padding: 0 30px;
       display: inline-block;
@@ -118,7 +130,7 @@
     }
 
     .cca__button:hover {
-      background: #659FFF;
+      background: #5C6BC0;
     }
 
     .cca__button---flat {
@@ -127,7 +139,7 @@
       line-height: 40px;
       text-transform: uppercase;
       font-size: 14px;
-      color: #2196F3;
+      color: #3F51B5;
       padding: 0 30px;
       display: inline-block;
       cursor: pointer;
@@ -135,7 +147,7 @@
     }
 
     .cca__button---flat:hover {
-      color: #659FFF;
+      color: #5C6BC0;
     }
     /*bottomSheet*/
 
@@ -253,7 +265,7 @@
       height: 4px;
       cursor: pointer;
       box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
-      background: #2196f3;
+      background: #3F51B5;
       border-radius: 11.7px;
       border: 0px solid rgba(1, 1, 1, 0);
     }
@@ -264,14 +276,14 @@
       height: 16px;
       width: 16px;
       border-radius: 20px;
-      background: #2196f3;
+      background: #3F51B5;
       cursor: pointer;
       -webkit-appearance: none;
       margin-top: -6px;
     }
 
     input[type=range]:focus::-webkit-slider-runnable-track {
-      background: #2196f3;
+      background: #3F51B5;
     }
 
     input[type=range]::-moz-range-track {
@@ -279,7 +291,7 @@
       height: 4px;
       cursor: pointer;
       box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
-      background: #2196f3;
+      background: #3F51B5;
       border-radius: 11.7px;
       border: 0px solid rgba(1, 1, 1, 0);
     }
@@ -290,7 +302,7 @@
       height: 16px;
       width: 16px;
       border-radius: 20px;
-      background: #2196f3;
+      background: #3F51B5;
       cursor: pointer;
     }
 
@@ -304,14 +316,14 @@
     }
 
     input[type=range]::-ms-fill-lower {
-      background: #2196f3;
+      background: #3F51B5;
       border: 0px solid rgba(1, 1, 1, 0);
       border-radius: 23.4px;
       box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
     }
 
     input[type=range]::-ms-fill-upper {
-      background: #2196f3;
+      background: #3F51B5;
       border: 0px solid rgba(1, 1, 1, 0);
       border-radius: 23.4px;
       box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
@@ -323,17 +335,17 @@
       height: 16px;
       width: 16px;
       border-radius: 20px;
-      background: #2196f3;
+      background: #3F51B5;
       cursor: pointer;
       height: 4px;
     }
 
     input[type=range]:focus::-ms-fill-lower {
-      background: #2196f3;
+      background: #3F51B5;
     }
 
     input[type=range]:focus::-ms-fill-upper {
-      background: #2196f3;
+      background: #3F51B5;
     }
   </style>
   <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
@@ -350,7 +362,8 @@
 
   <div id="pixi-container">
   </div>
-  <div class='cca__logo'>logo</div>
+  <div class='cca__logo'><img src='images/icon.svg'></div>
+  <div class='cca__web-title'>Internet donation</div>
   <div class="cca__alert__wrap cca-surface" id="innitialAlert">
     <div class="cca__alert__icon"><i class="material-icons">warning</i></div>
     <div class="cca__alert__title cca-font--regular">A refugee ship was detected 862KM from Tel Aviv-Yafo, Israel</div>
@@ -376,7 +389,7 @@
 
     <div class="cca__page__slider-wrap">
       <input id="donationSlider" type="range" min="20" max="700">
-      <div class="cca__page__slider-title cca-font--regular">233 Kbps</div>
+      <div class="cca__page__slider-title cca-font--regular">340 Kbps</div>
       <div class="cca__page__slider-subtitle cca-font--regular">25% of your internet speed</div>
     </div>
 
@@ -387,7 +400,7 @@
   </div>
 
 
-  <div class="cca__modal-wrap tmp-hide cca-surface">
+  <div class="cca__modal-wrap tmp-hide cca-surface"  id="moreDialog">
     <div class="cca__modal-back-button"><i class="material-icons" id="backDialog">arrow_back</i></div>
     <div class="cca__modal-content-unit-wrap">
       <h3 class="cca__modal-title cca-font--regular">Why do refugees need internet?</h3>
@@ -422,6 +435,11 @@
 
 
   </div>
+  <div class="cca__modal-wrap tmp-hide cca-surface" id="aboutDialog">
+    <div class="cca__modal-back-button"><i class="material-icons" id="backAboutDialog">arrow_back</i></div>
+    content
+  </div>
+
 
 
   </div>
