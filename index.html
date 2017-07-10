@@ -70,6 +70,20 @@
       opacity: 1;
     }
 
+.cca__location-marker {
+  position: fixed;
+      top: 10%;
+      left:calc(50% - 20px);
+      width: 40px;
+      height: 40px;
+      text-align:center;
+      background-image: url('images/marker.png');
+      background-size:contain;
+      background-repeat:no-repeat;
+      background-position: center center;
+      transition: all 1s ease-in-out;
+      /*z-index:1;*/
+}
     .cca__web-title {
       position: fixed;
       top: 0px;
@@ -224,6 +238,10 @@
       font-size: 16px;
       line-height: 24px;
     }
+
+
+
+
     /*desktop styles*/
 
     @media (min-width: 640px) {
@@ -233,6 +251,12 @@
         bottom: 30vh;
         left: calc(50% - 175px);
       }
+      .cca-page-content-wrap {
+     
+      width: 600px;
+      left:calc(50% - 300px);
+    }
+
     }
 
     .ui-accordion .ui-accordion-header {
@@ -364,6 +388,7 @@
   <div id="pixi-container">
   </div>
   <div class='cca__logo'><img src='images/icon.svg'></div>
+  <div class='cca__location-marker'></div>
   <div class='cca__web-title cca-font--bold'>Internet donation</div>
   <div class="cca__alert__wrap cca-surface" id="innitialAlert">
     <div class="cca__alert__icon"><i class="material-icons">warning</i></div>
@@ -372,12 +397,12 @@
     <div class="cca__button" id="okButtonDialog">OK</div>
   </div>
   <div class="cca__alert__wrap tmp-hide cca-surface" id="thankYouMsg">
-    <div class="cca__alert__icon"><i class="material-icons">directions_boat</i></div>
+    <div class="cca__alert__icon"><img src="images/wifi.gif" style="width: 128px;"></div>
     <div class="cca__alert__title cca-font--regular">Thanks for donating!</div>
     <div class="cca__alert__subtitle cca-font--regular">You are currently being redirected to https://cca.co.il</div>
   </div>
   <div class="cca__alert__wrap tmp-hide cca-surface" id="noDonationMsg">
-    <div class="cca__alert__icon"><i class="material-icons">directions_boat</i></div><br><br>
+    <div class="cca__alert__icon"><img src="images/wifi.gif" style="width: 128px;"></div><br><br>
     <div class="cca__alert__subtitle cca-font--regular">You are currently being redirected to https://cca.co.il</div>
   </div>
   <div class="cca-page-content-wrap cca-surface tmp-hide">
