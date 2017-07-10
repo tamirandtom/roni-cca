@@ -78,6 +78,7 @@
       height: 64px;
       line-height:64px;
       text-align:center;
+      color:#fff;
     }
     /*Dialogs*/
 
@@ -363,11 +364,11 @@
   <div id="pixi-container">
   </div>
   <div class='cca__logo'><img src='images/icon.svg'></div>
-  <div class='cca__web-title'>Internet donation</div>
+  <div class='cca__web-title cca-font--bold'>Internet donation</div>
   <div class="cca__alert__wrap cca-surface" id="innitialAlert">
     <div class="cca__alert__icon"><i class="material-icons">warning</i></div>
     <div class="cca__alert__title cca-font--regular">A refugee ship was detected 862KM from Tel Aviv-Yafo, Israel</div>
-    <div class="cca__alert__subtitle cca-font--regular">Aegean Sea</br>8.160032, 26.302040</div>
+    <div class="cca__alert__subtitle cca-font--regular">Aegean Sea</br>8.<span id='randomizeNumbers1'>160032</span>, 26.<span id='randomizeNumbers2'>160032</span></div>
     <div class="cca__button" id="okButtonDialog">OK</div>
   </div>
   <div class="cca__alert__wrap tmp-hide cca-surface" id="thankYouMsg">

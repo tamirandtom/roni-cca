@@ -1,6 +1,33 @@
 $(document).ready(function () {
 
     // slider change
+    var NUM_OF_DIGITS = 5;
+    var MOVE_MAGNITUDE = 5;
+    var firstScreenIsActive = true;
+
+    function randomizeCoord() {
+        if (firstScreenIsActive) {
+            // Get random numbers
+            var c1 = Math.floor(Math.random() * (Math.pow(10, NUM_OF_DIGITS)));
+            var c2 = Math.floor(Math.random() * (Math.pow(10, NUM_OF_DIGITS)));
+
+            // Change text
+            $("#randomizeNumbers1").text(c1);
+            $("#randomizeNumbers2").text(c2);
+
+            // Move map
+            bg.position.y = innitialPos.y + MOVE_MAGNITUDE * (c1 / Math.pow(10, NUM_OF_DIGITS - 1));
+            bg.position.x = innitialPos.x + MOVE_MAGNITUDE * (c2 / Math.pow(10, NUM_OF_DIGITS - 1));
+
+
+        }
+
+    }
+    $(function () {
+        setInterval(randomizeCoord, 5630);
+    });
+
+
 
     $('#donationSlider').on("change mousemove", function () {
         $('.cca__page__slider-title').text($(this).val() + "KBPS");
@@ -40,6 +67,7 @@ $(document).ready(function () {
         $('.cca-page-content-wrap').fadeIn(400);
         $('#innitialAlert').fadeOut(400);
         $('.cca__logo').addClass('upper');
+        firstScreenIsActive = false;
     }
 
     function donateButton() {
@@ -72,6 +100,11 @@ $(document).ready(function () {
         w: window.innerWidth,
         h: window.innerHeight
     }
+    var innitialPos = {
+        x: 0,
+        y: 0
+    }
+
     // Renderer
     var renderer = PIXI.autoDetectRenderer(screensize.w, screensize.h);
     $('#pixi-container').append(renderer.view);
@@ -106,6 +139,10 @@ $(document).ready(function () {
             bg.position.x = -(screensize.h - screensize.w) * 2;
         }
         renderer.resize(screensize.w, screensize.h);
+
+        innitialPos.x = bg.position.x;
+        innitialPos.y = bg.position.y;
+
     }
 
     function setup() {
