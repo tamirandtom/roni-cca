@@ -1,6 +1,14 @@
 $(document).ready(function () {
 
+// slider change
 
+$('#donationSlider').on("change mousemove", function() {
+    $('.cca__page__slider-title').text($(this).val()+"KBPS");
+    $('.cca__page__slider-subtitle').text(Math.floor((parseInt($(this).val())/1400)*100)+"% of your internet speed");
+});
+
+
+// navigation
     $(".cca__modal-title").click(function () {
         $(this).siblings(".cca__modal-conetnt").slideToggle();
     });
@@ -8,6 +16,7 @@ $(document).ready(function () {
     function exitDialog() {
         $('.cca__modal-wrap').fadeOut(400);
     }
+
     function showDialog() {
         $('.cca__modal-wrap').fadeIn(400);
     }
@@ -15,28 +24,26 @@ $(document).ready(function () {
     function showMainPage() {
         $('.cca-page-content-wrap').fadeIn(400);
         $('#innitialAlert').fadeOut(400);
-
+        $('.cca__logo').addClass('upper');
     }
 
     function donateButton() {
         $('.cca-page-content-wrap').fadeOut(400);
         $('#thankYouMsg').fadeIn(400);
-
     }
+
     function cancelButton() {
         $('.cca-page-content-wrap').fadeOut(400);
         $('#noDonationMsg').fadeIn(400);
-
     }
 
 
     $("#backDialog").on("click", exitDialog);
     $("#learnMoreButton").on("click", showDialog);
     $("#okButtonDialog").on("click", showMainPage);
-
     $("#dontDonateButton").on("click", cancelButton);
     $("#donateButton").on("click", donateButton);
-    $(window).on('resize', resize);
+
     var screensize = {
         w: window.innerWidth,
         h: window.innerHeight
@@ -55,6 +62,7 @@ $(document).ready(function () {
     loader.onComplete = setup;
     loader.load();
     var displacementFilte, bg;
+    $(window).on('resize', resize);
 
     function resize() {
         var screensize = {
@@ -67,12 +75,11 @@ $(document).ready(function () {
             bg.height = ratio * screensize.w;
             bg.position.y = -(screensize.w - screensize.h);
 
-        }
-        else {
+        } else {
             var ratio = screensize.h / screensize.w;
             bg.width = ratio * screensize.h;
             bg.height = screensize.h;
-            bg.position.x = -(screensize.h - screensize.w)*2;
+            bg.position.x = -(screensize.h - screensize.w) * 2;
         }
         renderer.resize(screensize.w, screensize.h);
     }
@@ -84,12 +91,12 @@ $(document).ready(function () {
         // Stretch background
         resize();
         // Filter
-        var displacementTexture = PIXI.Texture.fromImage("http://i.imgur.com/2yYayZk.png");
+        var displacementTexture = PIXI.Texture.fromImage("images/bump.png");
         displacementFilter = new PIXI.DisplacementFilter(displacementTexture);
         container.filters = [displacementFilter];
         requestAnimFrame(animate);
     }
-    
+
     // Animate
     function animate() {
         var offset = 0.5;
