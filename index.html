@@ -31,6 +31,7 @@
 
     * {
       box-sizing: border-box;
+      outline: none;
     }
 
     body {
@@ -38,9 +39,14 @@
     }
 
     .cca-surface {
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
       background-image: url(data:image/png;base64,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);
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .cca-surface.cca-surface--no-webkit {
+      background: #fff;
     }
 
     .cca-font--regular {
@@ -60,39 +66,41 @@
       right: 16px;
       width: 40px;
       height: 40px;
-      text-align:center;
+      text-align: center;
       /*background: #f0f;*/
       transition: all 1s ease-in-out;
       opacity: 0.2;
-      z-index:1;
+      z-index: 1;
     }
+
     .cca__logo.upper {
       opacity: 1;
     }
 
-.cca__location-marker {
-  position: fixed;
+    .cca__location-marker {
+      position: fixed;
       top: 10%;
-      left:calc(50% - 20px);
+      left: calc(50% - 20px);
       width: 40px;
       height: 40px;
-      text-align:center;
+      text-align: center;
       background-image: url('images/marker.png');
-      background-size:contain;
-      background-repeat:no-repeat;
+      background-size: contain;
+      background-repeat: no-repeat;
       background-position: center center;
       transition: all 1s ease-in-out;
       /*z-index:1;*/
-}
+    }
+
     .cca__web-title {
       position: fixed;
       top: 0px;
       right: 0px;
       width: 100%;
       height: 64px;
-      line-height:64px;
-      text-align:center;
-      color:#fff;
+      line-height: 64px;
+      text-align: center;
+      color: #fff;
     }
     /*Dialogs*/
 
@@ -128,6 +136,15 @@
       margin-bottom: 24px;
     }
     /*TODO: Add :hover states and active*/
+
+    #moreDialog,
+    #aboutDialog {
+      background-color: #fff;
+    }
+
+    .aboutDialog__footnotes {
+      font-size: 14px;
+    }
 
     .cca__button {
       font-family: 'Montserrat', sans-serif;
@@ -239,9 +256,16 @@
       line-height: 24px;
     }
 
+    h3 i {
+      position: relative;
+      top: 6px;
+      transform: rotate(0deg);
+      transition: all 0.2s ease-out;
+    }
 
-
-
+    .cca__zippy--open i {
+      transform: rotate(180deg);
+    }
     /*desktop styles*/
 
     @media (min-width: 640px) {
@@ -250,13 +274,31 @@
         position: fixed;
         bottom: 30vh;
         left: calc(50% - 175px);
+        padding: 24px 40px;
       }
       .cca-page-content-wrap {
-     
-      width: 600px;
-      left:calc(50% - 300px);
+        border-radius: 8px 8px 0 0;
+        width: 600px;
+        left: calc(50% - 300px);
+      }
+      .cca__modal-wrap {
+        max-width: 500px;
+      }
+      .cca__location-marker {
+
+        top: 20%;
+        left: calc(50% - 40px);
+        width: 80px;
+        height: 80px;
+      }
+      .cca__page-subtitle {
+        padding: 0 32px;
+      }
     }
 
+    .cca__modal-conetnt-img img {
+      max-width: 90%;
+      margin: 16px 0;
     }
 
     .ui-accordion .ui-accordion-header {
@@ -275,102 +317,26 @@
     }
     /*Range picker CSS*/
 
-    input[type=range] {
+    input[type="range"] {
       -webkit-appearance: none;
-      width: 100%;
-      margin: 6px 0;
+      -moz-apperance: none;
+      border-radius: 6px;
+      height: 6px;
+      width: 256px;
+      background-image: -webkit-gradient( linear,
+      left top,
+      right top,
+      color-stop(0.5, #3F51B5),
+      color-stop(0.5, #B1B1B1));
     }
 
-    input[type=range]:focus {
-      outline: none;
-    }
-
-    input[type=range]::-webkit-slider-runnable-track {
-      width: 100%;
-      height: 4px;
-      cursor: pointer;
-      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
-      background: #3F51B5;
-      border-radius: 11.7px;
-      border: 0px solid rgba(1, 1, 1, 0);
-    }
-
-    input[type=range]::-webkit-slider-thumb {
-      box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-      border: 0px solid rgba(0, 0, 0, 0);
+    input[type='range']::-webkit-slider-thumb {
+      -webkit-appearance: none !important;
+      background-color: #3F51B5;
+      border: 1px solid #3F51B5;
+      border-radius: 8px;
       height: 16px;
       width: 16px;
-      border-radius: 20px;
-      background: #3F51B5;
-      cursor: pointer;
-      -webkit-appearance: none;
-      margin-top: -6px;
-    }
-
-    input[type=range]:focus::-webkit-slider-runnable-track {
-      background: #3F51B5;
-    }
-
-    input[type=range]::-moz-range-track {
-      width: 100%;
-      height: 4px;
-      cursor: pointer;
-      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
-      background: #3F51B5;
-      border-radius: 11.7px;
-      border: 0px solid rgba(1, 1, 1, 0);
-    }
-
-    input[type=range]::-moz-range-thumb {
-      box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-      border: 0px solid rgba(0, 0, 0, 0);
-      height: 16px;
-      width: 16px;
-      border-radius: 20px;
-      background: #3F51B5;
-      cursor: pointer;
-    }
-
-    input[type=range]::-ms-track {
-      width: 100%;
-      height: 4px;
-      cursor: pointer;
-      background: transparent;
-      border-color: transparent;
-      color: transparent;
-    }
-
-    input[type=range]::-ms-fill-lower {
-      background: #3F51B5;
-      border: 0px solid rgba(1, 1, 1, 0);
-      border-radius: 23.4px;
-      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
-    }
-
-    input[type=range]::-ms-fill-upper {
-      background: #3F51B5;
-      border: 0px solid rgba(1, 1, 1, 0);
-      border-radius: 23.4px;
-      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
-    }
-
-    input[type=range]::-ms-thumb {
-      box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-      border: 0px solid rgba(0, 0, 0, 0);
-      height: 16px;
-      width: 16px;
-      border-radius: 20px;
-      background: #3F51B5;
-      cursor: pointer;
-      height: 4px;
-    }
-
-    input[type=range]:focus::-ms-fill-lower {
-      background: #3F51B5;
-    }
-
-    input[type=range]:focus::-ms-fill-upper {
-      background: #3F51B5;
     }
   </style>
   <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
@@ -392,8 +358,9 @@
   <div class='cca__web-title cca-font--bold'>Internet donation</div>
   <div class="cca__alert__wrap cca-surface" id="innitialAlert">
     <div class="cca__alert__icon"><i class="material-icons">warning</i></div>
-    <div class="cca__alert__title cca-font--regular">A refugee ship was detected 862KM from Tel Aviv-Yafo, Israel</div>
-    <div class="cca__alert__subtitle cca-font--regular">Aegean Sea</br>8.<span id='randomizeNumbers1'>160032</span>, 26.<span id='randomizeNumbers2'>160032</span></div>
+    <div class="cca__alert__title cca-font--regular">A refugee ship was detected 26KM from Tel Aviv-Yafo, Israel</div>
+    <div class="cca__alert__subtitle cca-font--regular">Meditternean Sea</br>
+      </br>40.<span id='randomizeNumbers1'>162</span>° N 79.<span id='randomizeNumbers2'>132</span>° W.</div>
     <div class="cca__button" id="okButtonDialog">OK</div>
   </div>
   <div class="cca__alert__wrap tmp-hide cca-surface" id="thankYouMsg">
@@ -411,25 +378,20 @@
       The people aboard the ship are in dire need of internet. Donating 20% of your bandwidth can save lives.
     </div>
     <div class="cca__button---flat" id="learnMoreButton">learn more</div>
-
-
     <div class="cca__page__slider-wrap">
       <input id="donationSlider" type="range" min="20" max="700">
       <div class="cca__page__slider-title cca-font--regular">340 Kbps</div>
       <div class="cca__page__slider-subtitle cca-font--regular">25% of your internet speed</div>
     </div>
-
     <div class="cca__page-buttons-wrap">
       <div class="cca__button" id="donateButton">OK</div>
       <div class="cca__button---flat" id="dontDonateButton">not now</div>
     </div>
   </div>
-
-
-  <div class="cca__modal-wrap tmp-hide cca-surface"  id="moreDialog">
+  <div class="cca__modal-wrap tmp-hide cca-surface" id="moreDialog">
     <div class="cca__modal-back-button"><i class="material-icons" id="backDialog">arrow_back</i></div>
     <div class="cca__modal-content-unit-wrap">
-      <h3 class="cca__modal-title cca-font--regular">Why do refugees need internet?</h3>
+      <h3 class="cca__modal-title cca-font--bold">Why do refugees need internet? <i class="material-icons">expand_more</i></h3>
       <div class="cca__modal-conetnt cca-font--regular tmp-hide">
         Nowadays, the survival of refugees relief heavily on internet access. Whether by sending their geo-location, updating status
         of a hazardous boat trip via in-app messaging services or even social networks, and sometimes also by documenting
@@ -437,10 +399,12 @@
         a connected mobile phone is crucial and, in many cases, potentially life-saving.
         <br> As you can imagine, a reliance upon regular internet services usually demands that the refugees travel as close
         to the land as possible.
+        <div class='cca__modal-conetnt-img'><img src='images/selfieboat1.jpg' /></div>
+        <div class='cca__modal-conetnt-img'><img src='images/selfieboat2.jpg' /></div>
       </div>
     </div>
     <div class="cca__modal-content-unit-wrap">
-      <h3 class="cca__modal-title cca-font--regular">What is an internet donation?</h3>
+      <h3 class="cca__modal-title cca-font--bold">What is an internet donation? <i class="material-icons">expand_more</i></h3>
       <div class="cca__modal-conetnt cca-font--regular tmp-hide">
         Simply put, an internet donation is the agreeable transfer of data allowance from one mobile phone onto another.
         <br> When trying to access internet as an alien, one is relying on available GSM and 4G services. These service networks
@@ -461,18 +425,23 @@
 
 
   </div>
-  <div class="cca__modal-wrap tmp-hide cca-surface" id="aboutDialog">
+  <div class="cca__modal-wrap tmp-hide cca-surface cca-font--regular" id="aboutDialog">
     <div class="cca__modal-back-button"><i class="material-icons" id="backAboutDialog">arrow_back</i></div>
-    content
+    <br><br><span class="cca-font--bold">Internet Donation</span> is a website by the <span class="cca-font--bold">Relief & Monitoring</span>    non-governmental organization (NGO).<br> This new initiative can help you donate kilobytes per second (KBPS) for refugees
+    in need of internet. <br> Kilobytes per second are a way to measure your internet data allowance, or how much information
+    you can download online and access right now.<br> This donating action can save lives.<br>
+    <br> Technical note:<br> The service normally functions well when a boat is detected within the Exclusive Economic Zone
+    (EEZ) of waters and is normally obsolete once a boat enters the International, Territorial or Contiguous waters. Due
+    to this fact, the service only spots boats that are in this EEZ area.
+
+    <div class='aboutDialog__footnotes cca-font--bold'>
+      Internet Donation is afloat online by Ronnie Karfiol.<br>Special thanks to Tamir Pomerantz and Eran Hadas.
+    </div>
+
   </div>
-
-
-
   </div>
   <script src="https://cdn.rawgit.com/GoodBoyDigital/pixi.js/v1.6.1/bin/pixi.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
-
-
 </body>
 
 </html>

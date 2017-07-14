@@ -1,7 +1,14 @@
 $(document).ready(function () {
 
+
+    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
+    if (isChrome) { 
+        // If browser is chrome then background blur is not supported
+        $(".cca-surface").addClass('cca-surface--no-webkit');
+    }
     // slider change
-    var NUM_OF_DIGITS = 5;
+    var NUM_OF_DIGITS = 3;
     var MOVE_MAGNITUDE = 5;
     var firstScreenIsActive = true;
 
@@ -28,17 +35,32 @@ $(document).ready(function () {
     });
 
 
+    // slider change
+    $('#donationSlider').change(function () {
+        var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
 
-    $('#donationSlider').on("change mousemove", function () {
+        $(this).css('background-image',
+            '-webkit-gradient(linear, left top, right top, ' +
+            'color-stop(' + val + ', #3F51B5), ' +
+            'color-stop(' + val + ', #B1B1B1)' +
+            ')'
+        );
+
         $('.cca__page__slider-title').text($(this).val() + "KBPS");
         $('.cca__page__slider-subtitle').text(Math.floor((parseInt($(this).val()) / 1400) * 100) + "% of your internet speed");
     });
 
 
-    // navigation
+
+    // zippy
     $(".cca__modal-title").click(function () {
         $(this).siblings(".cca__modal-conetnt").slideToggle();
+        $(this).toggleClass('cca__zippy--open');
     });
+
+
+    // navigation
+
 
     function exitDialog() {
         $('#moreDialog').fadeOut(400);

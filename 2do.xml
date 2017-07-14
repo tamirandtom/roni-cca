@@ -3,10 +3,16 @@
 <!--logo modal-->
 <!--location pin on map-->
 <!--map jump + coordinates change-->
-map animaiton tween
-map move up animation when moving to 2nd screen
+Map animaiton tween
+<!-- --map move up animation when moving to 2nd screen -->
+<!-- Add 2 images to the information page -->
+<!-- Apply bold style to zippy titles -->
+<!-- Alert text and coordinate formatting -->
+<!-- Slider colors (1/2) -->
+<!-- opacity for modals -- currently works only in safari-->
+<!-- Content for logo modal -->
+additional content for FAQ
 <!--slider-->
 <!--thanks for donating gif animation-->
 integrating the cca system (splash.html)
-desktop version
 fix background: https://gist.github.com/ClickSimply/581823db9cdc8d94ed3f78c1a548f50d
