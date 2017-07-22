@@ -1,6 +1,69 @@
 $(document).ready(function () {
 
 
+    // Navigation
+
+
+    function exitDialog() {
+        $('#moreDialog').fadeOut(400);
+    }
+
+    function showDialog() {
+        $('#moreDialog').fadeIn(400);
+    }
+
+
+    function exitAboutDialog() {
+        $('#aboutDialog').fadeOut(400);
+        $(".cca__logo").removeClass('tmp-hide');
+
+    }
+
+    function showAboutDialog() {
+        $('#aboutDialog').fadeIn(400);
+        $(".cca__logo").addClass('tmp-hide');
+
+    }
+
+
+
+    function showMainPage() {
+        $('.cca-page-content-wrap').fadeIn(400);
+        $('#innitialAlert').fadeOut(400);
+        $('.cca__logo').addClass('upper');
+        firstScreenIsActive = false;
+    }
+
+    function donateButton() {
+        $('.cca-page-content-wrap').fadeOut(400);
+        $('#thankYouMsg').fadeIn(400);
+        $('.cca__logo').removeClass('upper');
+        // Here goes the captive portal and analytics code        
+    }
+
+    function cancelButton() {
+        $('.cca-page-content-wrap').fadeOut(400);
+        $('#noDonationMsg').fadeIn(400);
+        $('.cca__logo').removeClass('upper');
+        // Here goes the captive portal and analytics code        
+    }
+
+
+    $("#backDialog").on("click", exitDialog);
+    $("#learnMoreButton").on("click", showDialog);
+
+    $("#backAboutDialog").on("click", exitAboutDialog);
+    $(".cca__logo").on("click", showAboutDialog);
+
+
+    $("#okButtonDialog").on("click", showMainPage);
+    $("#dontDonateButton").on("click", cancelButton);
+    $("#donateButton").on("click", donateButton);
+
+
+
+
+
     var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
     if (isChrome) { 
@@ -62,66 +125,6 @@ $(document).ready(function () {
         $(this).siblings(".cca__modal-conetnt").slideToggle();
         $(this).toggleClass('cca__zippy--open');
     });
-
-
-    // navigation
-
-
-    function exitDialog() {
-        $('#moreDialog').fadeOut(400);
-    }
-
-    function showDialog() {
-        $('#moreDialog').fadeIn(400);
-    }
-
-
-    function exitAboutDialog() {
-        $('#aboutDialog').fadeOut(400);
-        $(".cca__logo").removeClass('tmp-hide');
-
-    }
-
-    function showAboutDialog() {
-        $('#aboutDialog').fadeIn(400);
-        $(".cca__logo").addClass('tmp-hide');
-
-    }
-
-
-
-    function showMainPage() {
-        $('.cca-page-content-wrap').fadeIn(400);
-        $('#innitialAlert').fadeOut(400);
-        $('.cca__logo').addClass('upper');
-        firstScreenIsActive = false;
-    }
-
-    function donateButton() {
-        $('.cca-page-content-wrap').fadeOut(400);
-        $('#thankYouMsg').fadeIn(400);
-        $('.cca__logo').removeClass('upper');
-
-    }
-
-    function cancelButton() {
-        $('.cca-page-content-wrap').fadeOut(400);
-        $('#noDonationMsg').fadeIn(400);
-        $('.cca__logo').removeClass('upper');
-
-    }
-
-
-    $("#backDialog").on("click", exitDialog);
-    $("#learnMoreButton").on("click", showDialog);
-
-    $("#backAboutDialog").on("click", exitAboutDialog);
-    $(".cca__logo").on("click", showAboutDialog);
-
-
-    $("#okButtonDialog").on("click", showMainPage);
-    $("#dontDonateButton").on("click", cancelButton);
-    $("#donateButton").on("click", donateButton);
 
 
     // Background animation
