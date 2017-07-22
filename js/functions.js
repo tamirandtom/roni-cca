@@ -9,7 +9,7 @@ $(document).ready(function () {
     }
     // slider change
     var NUM_OF_DIGITS = 3;
-    var MOVE_MAGNITUDE = 5;
+    var MOVE_MAGNITUDE = 3;
     var firstScreenIsActive = true;
 
     function randomizeCoord() {
@@ -22,9 +22,14 @@ $(document).ready(function () {
             $("#randomizeNumbers1").text(c1);
             $("#randomizeNumbers2").text(c2);
 
+          
+            $(".cca__location-marker").css('left','calc(20% + '+MOVE_MAGNITUDE * (c1 / Math.pow(10, NUM_OF_DIGITS - 1))+'px)');
+            $(".cca__location-marker").css('top','calc(10% + '+MOVE_MAGNITUDE * (c2 / Math.pow(10, NUM_OF_DIGITS - 1))+'px)');
+
+
             // Move map
-            bg.position.y = innitialPos.y + MOVE_MAGNITUDE * (c1 / Math.pow(10, NUM_OF_DIGITS - 1));
-            bg.position.x = innitialPos.x + MOVE_MAGNITUDE * (c2 / Math.pow(10, NUM_OF_DIGITS - 1));
+            // bg.position.y = innitialPos.y + ;
+            // bg.position.x = innitialPos.x + MOVE_MAGNITUDE * (c2 / Math.pow(10, NUM_OF_DIGITS - 1));
 
 
         }
@@ -118,6 +123,9 @@ $(document).ready(function () {
     $("#dontDonateButton").on("click", cancelButton);
     $("#donateButton").on("click", donateButton);
 
+
+    // Background animation
+
     var screensize = {
         w: window.innerWidth,
         h: window.innerHeight
@@ -134,7 +142,7 @@ $(document).ready(function () {
     renderer.resize(screensize.w, screensize.h);
     // Stage
 
-    var stage = new PIXI.Stage(0x000000);
+    var stage = new PIXI.Stage(0xff0000);
     var container = new PIXI.DisplayObjectContainer();
     stage.addChild(container);
     var loader = new PIXI.AssetLoader(["images/map.png"]);
@@ -143,6 +151,19 @@ $(document).ready(function () {
     var displacementFilte, bg;
     $(window).on('resize', resize);
 
+
+
+    // function resize() {
+    //             var ww = window.clientWidth, hh = window.clientHeight;
+    //             var ratio = Math.min(1, Math.min(ww / w0, hh / h0));
+    //             w1 = Math.ceil(ratio * w0); h1 = Math.ceil(ratio * h0);
+    //             bg.width = w1 + "px";
+    //             bg.height = h1 + "px";
+    //             bg.left = Math.floor((ww-w1)/2) + "px";
+    //             bg.top = Math.floor((hh-h1)/2) + "px";
+
+    // }
+
     function resize() {
         var screensize = {
             w: window.innerWidth,
@@ -150,22 +171,19 @@ $(document).ready(function () {
         }
         if (screensize.w > screensize.h) {
             var ratio = screensize.w / screensize.h;
-            bg.width = screensize.w
-            bg.height = ratio * screensize.w;
-            bg.position.y = -(screensize.w - screensize.h);
+            bg.width = screensize.w + 200
+            bg.height = ratio * screensize.w + 200;
+            bg.position.y = -(screensize.w - screensize.h) - 100;
 
         } else {
             var ratio = screensize.h / screensize.w;
-            bg.width = ratio * screensize.h;
-            bg.height = screensize.h;
-            bg.position.x = -(screensize.h - screensize.w) * 2;
+            bg.width = ratio * screensize.h + 200;
+            bg.height = screensize.h + 200;
+            bg.position.x = -100 -(screensize.h - screensize.w) * 2;
         }
         renderer.resize(screensize.w, screensize.h);
-
-        innitialPos.x = bg.position.x;
-        innitialPos.y = bg.position.y;
-
     }
+
 
     function setup() {
         var texture = PIXI.TextureCache["images/map.png"];
