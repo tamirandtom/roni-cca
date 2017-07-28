@@ -77,7 +77,7 @@ $(document).ready(function () {
     var firstScreenIsActive = true;
 
     function randomizeCoord() {
-        if (firstScreenIsActive) {
+        // if (firstScreenIsActive) {
             // Get random numbers
             var c1 = Math.floor(Math.random() * (Math.pow(10, NUM_OF_DIGITS)));
             var c2 = Math.floor(Math.random() * (Math.pow(10, NUM_OF_DIGITS)));
@@ -85,12 +85,13 @@ $(document).ready(function () {
             $("#randomizeNumbers1").text(c1);
             $("#randomizeNumbers2").text(c2);
             // Move marker
-            $(".cca__location-marker").css('left', 'calc(20% + ' + MOVE_MAGNITUDE * (c1 / Math.pow(10, NUM_OF_DIGITS - 1)) + 'px)');
-            $(".cca__location-marker").css('top', 'calc(10% + ' + MOVE_MAGNITUDE * (c2 / Math.pow(10, NUM_OF_DIGITS - 1)) + 'px)');
+            $(".cca__location-marker").css('left', 'calc(50% - 130px + ' + MOVE_MAGNITUDE * (c1 / Math.pow(10, NUM_OF_DIGITS - 1)) + 'px)');
+            $(".cca__location-marker").css('top', 'calc(50% - 250px + ' + MOVE_MAGNITUDE * (c2 / Math.pow(10, NUM_OF_DIGITS - 1)) + 'px)');
 
-        }
+        // }
 
     }
+    randomizeCoord();
     $(function () {
         setInterval(randomizeCoord, 5630);
     });
@@ -179,10 +180,14 @@ $(document).ready(function () {
         w: window.innerWidth,
         h: window.innerHeight
     }
-    var innitialPos = {
-        x: 0,
-        y: 0
+    var center = {
+        x: -50,
+        y: -150
     }
+    
+
+    var imgRatio;
+    var imgInnitialSizeH,imgInnitialSizeW;
 
     // Renderer
     var renderer = PIXI.autoDetectRenderer(screensize.w, screensize.h);
@@ -204,26 +209,33 @@ $(document).ready(function () {
             w: window.innerWidth,
             h: window.innerHeight
         }
-        if (screensize.w > screensize.h) {
-            var ratio = screensize.w / screensize.h;
-            bg.width = screensize.w + 200
-            bg.height = ratio * screensize.w + 200;
-            bg.position.y = -(screensize.w - screensize.h) - 100;
 
-        } else {
-            var ratio = screensize.h / screensize.w;
-            bg.width = ratio * screensize.h + 200;
-            bg.height = screensize.h + 200;
-            bg.position.x = -100 - (screensize.h - screensize.w) * 2;
-        }
+        bg.height =  imgInnitialSizeH/2;
+        bg.width =  imgInnitialSizeW/2;
+        bg.position.y = center.y+(screensize.h / 2 - bg.height / 2);
+        bg.position.x = center.x+(screensize.w / 2 - bg.width / 2);
+
+        // if (screensize.w > screensize.h) {
+        //     var ratio = screensize.w / screensize.h;
+        //     bg.width = screensize.w + 200
+        //     bg.height = ratio * screensize.w + 200;
+        //     bg.position.y = -(screensize.w - screensize.h) - 100;
+
+        // } else {
+        //     var ratio = screensize.h / screensize.w;
+        //     bg.width = ratio * screensize.h + 200;
+        //     bg.height = screensize.h + 200;
+        //     bg.position.x = -100 - (screensize.h - screensize.w) * 2;
+        // }
         renderer.resize(screensize.w, screensize.h);
     }
-
-
     function setup() {
         var texture = PIXI.TextureCache["images/map.gif"];
         bg = new PIXI.Sprite(texture);
         container.addChild(bg);
+        imgRatio = bg.width / bg.height;
+        imgInnitialSizeH = bg.height;
+        imgInnitialSizeW = bg.width;
         // Stretch background
         resize();
         // Filter
