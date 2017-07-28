@@ -63,14 +63,15 @@ $(document).ready(function () {
 
 
 
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-
-    if (isChrome) { 
+    if (!isSafari) {
         // If browser is chrome then background blur is not supported
         $(".cca-surface").addClass('cca-surface--no-webkit');
     }
-    // slider change
+
+
+    // Change coordiantes
     var NUM_OF_DIGITS = 3;
     var MOVE_MAGNITUDE = 3;
     var firstScreenIsActive = true;
@@ -80,20 +81,12 @@ $(document).ready(function () {
             // Get random numbers
             var c1 = Math.floor(Math.random() * (Math.pow(10, NUM_OF_DIGITS)));
             var c2 = Math.floor(Math.random() * (Math.pow(10, NUM_OF_DIGITS)));
-
             // Change text
             $("#randomizeNumbers1").text(c1);
             $("#randomizeNumbers2").text(c2);
-
-          
-            $(".cca__location-marker").css('left','calc(20% + '+MOVE_MAGNITUDE * (c1 / Math.pow(10, NUM_OF_DIGITS - 1))+'px)');
-            $(".cca__location-marker").css('top','calc(10% + '+MOVE_MAGNITUDE * (c2 / Math.pow(10, NUM_OF_DIGITS - 1))+'px)');
-
-
-            // Move map
-            // bg.position.y = innitialPos.y + ;
-            // bg.position.x = innitialPos.x + MOVE_MAGNITUDE * (c2 / Math.pow(10, NUM_OF_DIGITS - 1));
-
+            // Move marker
+            $(".cca__location-marker").css('left', 'calc(20% + ' + MOVE_MAGNITUDE * (c1 / Math.pow(10, NUM_OF_DIGITS - 1)) + 'px)');
+            $(".cca__location-marker").css('top', 'calc(10% + ' + MOVE_MAGNITUDE * (c2 / Math.pow(10, NUM_OF_DIGITS - 1)) + 'px)');
 
         }
 
@@ -114,17 +107,70 @@ $(document).ready(function () {
             ')'
         );
 
-        $('.cca__page__slider-title').text($(this).val() + "KBPS");
-        $('.cca__page__slider-subtitle').text(Math.floor((parseInt($(this).val()) / 1400) * 100) + "% of your internet speed");
+        $('#modal-kbps-number').text($(this).val());
+        $('#modal-percent-number').text(Math.floor((parseInt($(this).val()) / 1400) * 100) + "%");
     });
 
 
 
-    // zippy
+    // Zippy interaction
     $(".cca__modal-title").click(function () {
         $(this).siblings(".cca__modal-conetnt").slideToggle();
         $(this).toggleClass('cca__zippy--open');
     });
+
+
+    // Language change
+
+    //default to english
+    switchLangToEng();
+
+
+
+    $(".cca__heb-button").click(function () {
+        $('.cca__flash-screen').addClass('cca__flash-screen--visible');
+        setTimeout(
+            function () {
+                switchLangToHeb();
+
+                $('.cca__flash-screen').removeClass('cca__flash-screen--visible');
+            }, 200);
+
+    });
+    $(".cca__eng-button").click(function () {
+        $('.cca__flash-screen').addClass('cca__flash-screen--visible');
+        setTimeout(
+            function () {
+                switchLangToEng();
+
+                $('.cca__flash-screen').removeClass('cca__flash-screen--visible');
+            }, 200);
+    });
+
+    function switchLangToHeb() {
+        $('.cca__modal-wrap, .cca__logo, .cca__alert__subtitle, .cca__alert__title, .cca__page__slider-subtitle, .cca__page__slider-title, .cca__language-switch').addClass('hebrew-font');
+        $('#backAboutDialog, #backDialog').html('arrow_forward')
+        for (var key in translations) {
+            if (translations.hasOwnProperty(key)) {
+                $('#' + key).html(translations[key].heb);
+                $('#' + key).addClass('hebrew-font');
+            }
+        }
+    }
+
+    function switchLangToEng() {
+        $('.cca__modal-wrap, .cca__logo, .cca__alert__subtitle, .cca__alert__title, .cca__page__slider-subtitle, .cca__page__slider-title, .cca__language-switch').removeClass('hebrew-font');
+        $('#backAboutDialog, #backDialog').html('arrow_back')
+        for (var key in translations) {
+            if (translations.hasOwnProperty(key)) {
+                $('#' + key).html(translations[key].eng);
+                $('#' + key).removeClass('hebrew-font');
+            }
+        }
+    }
+
+
+
 
 
     // Background animation
@@ -144,7 +190,6 @@ $(document).ready(function () {
     renderer.autoResize = true;
     renderer.resize(screensize.w, screensize.h);
     // Stage
-
     var stage = new PIXI.Stage(0x021019);
     var container = new PIXI.DisplayObjectContainer();
     stage.addChild(container);
@@ -153,19 +198,6 @@ $(document).ready(function () {
     loader.load();
     var displacementFilte, bg;
     $(window).on('resize', resize);
-
-
-
-    // function resize() {
-    //             var ww = window.clientWidth, hh = window.clientHeight;
-    //             var ratio = Math.min(1, Math.min(ww / w0, hh / h0));
-    //             w1 = Math.ceil(ratio * w0); h1 = Math.ceil(ratio * h0);
-    //             bg.width = w1 + "px";
-    //             bg.height = h1 + "px";
-    //             bg.left = Math.floor((ww-w1)/2) + "px";
-    //             bg.top = Math.floor((hh-h1)/2) + "px";
-
-    // }
 
     function resize() {
         var screensize = {
@@ -182,7 +214,7 @@ $(document).ready(function () {
             var ratio = screensize.h / screensize.w;
             bg.width = ratio * screensize.h + 200;
             bg.height = screensize.h + 200;
-            bg.position.x = -100 -(screensize.h - screensize.w) * 2;
+            bg.position.x = -100 - (screensize.h - screensize.w) * 2;
         }
         renderer.resize(screensize.w, screensize.h);
     }

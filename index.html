@@ -22,7 +22,31 @@
 
   <style>
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
-    /*TODO: remove*/
+    @import url('https://fonts.googleapis.com/css?family=Secular+One');
+    
+
+    .cca__flash-screen {
+      position:fixed;
+      top:0px;
+      left:0px;
+      width:100%;
+      height:100%;
+      background:#fff;
+      z-index:9999;
+      pointer-events:none;
+      opacity:0;
+      transition:opacity 0.2s ease-in-out;
+    }
+    .cca__flash-screen--visible {
+      opacity:1;
+
+    }
+
+    .hebrew-font {
+      font-family: 'Secular One', sans-serif !important;
+      letter-spacing: 0.5px;
+      direction: rtl;
+    }
 
     .tmp-hide {
       /*opacity:0;*/
@@ -71,6 +95,11 @@
       transition: all 1s ease-in-out;
       opacity: 0.2;
       z-index: 1;
+    }
+
+    .cca__logo.hebrew-font {
+      left: 16px;
+      right: auto;
     }
 
     .cca__logo.upper {
@@ -142,8 +171,14 @@
       background-color: #fff;
     }
 
+    #moreDialog.hebrew-font,
+    #aboutDialog.hebrew-font {
+      direction: rtl;
+      text-align: right;
+    }
+
     .aboutDialog__footnotes {
-      font-size: 14px;
+      font-size: 12px;
     }
 
     .cca__button {
@@ -242,6 +277,11 @@
       overflow-y: scroll;
     }
 
+    .cca__modal-wrap.hebrew-font {
+      right: 0px;
+      left: auto;
+    }
+
     .cca__modal-back-button i {
       font-size: 24px;
     }
@@ -265,6 +305,49 @@
 
     .cca__zippy--open i {
       transform: rotate(180deg);
+    }
+
+    .cca__language-switch {
+      font-family: 'Secular One', sans-serif;
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      border-radius: 4px;
+      /* height:32px; */
+      line-height: 32px;
+      text-align: center;
+      color: #fff;
+      /* background: #3F51B5; */
+      display: inline-block;
+      cursor:pointer;
+    }
+
+    .cca__language-switch.hebrew-font {
+      right: 14px;
+      left: auto;
+    }
+
+    .cca__language-switch.hebrew-font .cca__heb-button {
+      display: none;
+    }
+
+    .cca__language-switch .cca__heb-button {
+      display: inline-block;
+      padding: 0 8px;
+    }
+
+    .cca__language-switch.hebrew-font .cca__eng-button {
+      display: inline-block;
+      padding: 0 8px;
+    }
+
+    .cca__language-switch .cca__eng-button {
+      display: none;
+    }
+
+    .cca__language-switch i {
+      position: relative;
+      top: 6px;
     }
     /*desktop styles*/
 
@@ -294,6 +377,15 @@
       .cca__page-subtitle {
         padding: 0 32px;
       }
+          .cca__language-switch {
+      top: 24px;
+      left: 24px;
+  
+    }
+
+    .cca__language-switch.hebrew-font {
+      right: 24px;
+    }
     }
 
     .cca__modal-conetnt-img img {
@@ -350,38 +442,52 @@
 </head>
 
 <body>
-
+  <div class="cca__flash-screen"></div>
   <div id="pixi-container">
   </div>
   <div class='cca__logo'><img src='images/icon.svg'></div>
   <div class='cca__location-marker'></div>
-  <div class='cca__web-title cca-font--bold'>Internet donation</div>
+  <div class='cca__web-title cca-font--bold' id='main-title'>Internet donation</div>
+  <div class="cca__language-switch">
+
+    <div class="cca__heb-button">עב <i class="material-icons">public</i></div>
+    <div class="cca__eng-button">En <i class="material-icons">public</i></div>
+  </div>
+
+
+
+
   <div class="cca__alert__wrap cca-surface" id="innitialAlert">
     <div class="cca__alert__icon"><i class="material-icons">warning</i></div>
-    <div class="cca__alert__title cca-font--regular">A refugee ship was detected 26KM from Tel Aviv-Yafo, Israel</div>
-    <div class="cca__alert__subtitle cca-font--regular">Meditternean Sea</br>
-      </br>32.<span id='randomizeNumbers1'>162</span>° N 34.<span id='randomizeNumbers2'>132</span>° W.</div>
+    <div class="cca__alert__title cca-font--regular" id='alert-1-title'>A refugee ship was detected 26KM from Tel Aviv-Yafo, Israel</div>
+    <div class="cca__alert__subtitle cca-font--regular">
+       <span style="direction:ltr">32.<span id='randomizeNumbers1'>162</span>° N 34.<span id='randomizeNumbers2'>132</span>° W</span>
+    </br>
+      </br>
+  <span id='alert-1-location'>Meditternean Sea</span>
+     
+    </div>
     <div class="cca__button" id="okButtonDialog">OK</div>
   </div>
   <div class="cca__alert__wrap tmp-hide cca-surface" id="thankYouMsg">
     <div class="cca__alert__icon"><img src="images/wifi.gif" style="width: 128px;"></div>
-    <div class="cca__alert__title cca-font--regular">Thanks for donating!</div>
-    <div class="cca__alert__subtitle cca-font--regular">You are currently being redirected to https://cca.co.il</div>
+    <div class="cca__alert__title cca-font--regular" id="thankYouMsg-title">Thanks for donating!</div>
+    <div class="cca__alert__subtitle cca-font--regular" id="thankYouMsg-redirect">You are currently being redirected to https://cca.co.il</div>
   </div>
   <div class="cca__alert__wrap tmp-hide cca-surface" id="noDonationMsg">
     <div class="cca__alert__icon"><img src="images/wifi.gif" style="width: 128px;"></div><br><br>
-    <div class="cca__alert__subtitle cca-font--regular">You are currently being redirected to https://cca.co.il</div>
+    <div class="cca__alert__subtitle cca-font--regular" id="thankYouMsg-redirect-no-donation">You are currently being redirected to https://cca.co.il</div>
   </div>
   <div class="cca-page-content-wrap cca-surface tmp-hide">
-    <div class="cca__page-title cca-font--bold">Donate KBPS Today</div>
-    <div class="cca__page-subtitle cca-font--regular">
+    <div class="cca__page-title cca-font--bold" id="page-modal-title">Donate KBPS Today</div>
+    <div class="cca__page-subtitle cca-font--regular" id="page-modal-subtitle">
       The people aboard the ship are in dire need of internet. Donating 20% of your bandwidth can save lives.
     </div>
     <div class="cca__button---flat" id="learnMoreButton">learn more</div>
     <div class="cca__page__slider-wrap">
       <input id="donationSlider" type="range" min="20" max="700">
-      <div class="cca__page__slider-title cca-font--regular">340 KBPS</div>
-      <div class="cca__page__slider-subtitle cca-font--regular">25% of your internet speed</div>
+      <div class="cca__page__slider-title cca-font--regular"><span id='modal-kbps-number'>340</span> <span id='modal-kbps-desc'>KBPS</span></div>
+      <div class="cca__page__slider-subtitle cca-font--regular"><span id='modal-percent-number'>25%</span> <span id='modal-percent-desc'>of your internet speed</span></div>
     </div>
     <div class="cca__page-buttons-wrap">
       <div class="cca__button" id="donateButton">OK</div>
@@ -391,34 +497,29 @@
   <div class="cca__modal-wrap tmp-hide cca-surface" id="moreDialog">
     <div class="cca__modal-back-button"><i class="material-icons" id="backDialog">arrow_back</i></div>
     <div class="cca__modal-content-unit-wrap">
-      <h3 class="cca__modal-title cca-font--bold">Why do refugees need internet? <i class="material-icons">expand_more</i></h3>
+      <h3 class="cca__modal-title cca-font--bold"><span id='more-title-1'>Why do refugees need internet?</span> <i class="material-icons">expand_more</i></h3>
       <div class="cca__modal-conetnt cca-font--regular tmp-hide">
-        Nowadays, the survival of refugees relief heavily on internet access. Whether by sending their geo-location, updating status
-        of a hazardous boat trip via in-app messaging services or even social networks, and sometimes also by documenting
-        the number and identity of travellers on a specific boat through a series of selfie photographs. The function of
-        a connected mobile phone is crucial and, in many cases, potentially life-saving.
-        <br> As you can imagine, a reliance upon regular internet services usually demands that the refugees travel as close
-        to the land as possible.
-        <div class='cca__modal-conetnt-img'><img src='images/selfieboat1.jpg' /></div>
-        <div class='cca__modal-conetnt-img'><img src='images/selfieboat2.jpg' /></div>
+        <span id='more-content-1'>
+        </span>
       </div>
     </div>
     <div class="cca__modal-content-unit-wrap">
-      <h3 class="cca__modal-title cca-font--bold">What is an internet donation? <i class="material-icons">expand_more</i></h3>
+      <h3 class="cca__modal-title cca-font--bold"><span id='more-title-2'>What is an internet donation?</span> <i class="material-icons">expand_more</i></h3>
       <div class="cca__modal-conetnt cca-font--regular tmp-hide">
-        Simply put, an internet donation is the agreeable transfer of data allowance from one mobile phone onto another.
-        <br> When trying to access internet as an alien, one is relying on available GSM and 4G services. These service networks
-        naturally leave only a minimal amount of data allowance free of charge, if at all. Actual "free" data allowance figures
-        are subject to change during over-usage in the local carrier network, etc.
-        <br> We recognize that using the internet today is not simply a leisure activity, like TV or Video games, rather,
-        it can be crucial more than drinking water. However, it is not recognized by all as vital. We want to fix that.
-        <br> This is where we need you. Your action comes into aid here. In this case and occasion, we can transfer data
-        allowance from your local internet network into the refugee in need.
-        <br> It is not a simple task, but we have created our alternative network in order to carry it through. It is important
-        to notice that it is not considered, on the grounds of your country, a criminal or a terrorist act on any ground.
-        The only issue you have to be aware of is the speed sacrifice you are making. These means that technically, after
-        donating, your download of data online might potentially slow down. However, most users agree that the slowing effect
-        is minimal to a non-issue for them.
+        <span id='more-content-2'>
+       
+        </span>
+         <div class='cca__modal-conetnt-img'><img src='images/selfieboat1.jpg' /></div>
+        <div class='cca__modal-conetnt-img'><img src='images/selfieboat2.jpg' /></div>
+        <br>
+      </div>
+    </div> <div class="cca__modal-content-unit-wrap">
+      <h3 class="cca__modal-title cca-font--bold"><span id='more-title-3'>What is an internet donation?</span> <i class="material-icons">expand_more</i></h3>
+      <div class="cca__modal-conetnt cca-font--regular tmp-hide">
+        <span id='more-content-3'>
+       
+        </span>
+        <div class='cca__modal-conetnt-img'><img src='images/SEBIL-HAGAI.jpg' /></div>        
         <br>
       </div>
     </div>
@@ -427,21 +528,25 @@
   </div>
   <div class="cca__modal-wrap tmp-hide cca-surface cca-font--regular" id="aboutDialog">
     <div class="cca__modal-back-button"><i class="material-icons" id="backAboutDialog">arrow_back</i></div>
-    <br><br><span class="cca-font--bold">Internet Donation</span> is a website by the <span class="cca-font--bold">Relief & Monitoring</span>    non-governmental organization (NGO).<br> This new initiative can help you donate kilobytes per second (KBPS) for refugees
+    <br><br>
+    <span id='aboutDialog-desc' class='cca__modal-conetnt'>
+    <span class="cca-font--bold">Internet Donation</span> is a website by the <span class="cca-font--bold">Relief & Monitoring</span>    non-governmental organization (NGO).<br> This new initiative can help you donate kilobytes per second (KBPS) for refugees
     in need of internet. <br> Kilobytes per second are a way to measure your internet data allowance, or how much information
     you can download online and access right now.<br> This donating action can save lives.<br>
-    <br> Technical note:<br> The service normally functions well when a boat is detected within the <span class="cca-font--bold">Exclusive Economic Zone</span>
-    (EEZ) of waters and is normally obsolete once a boat enters the International, Territorial or Contiguous waters. Due
+    <br> Technical note:<br> The service normally functions well when a boat is detected within the <span class="cca-font--bold">Exclusive Economic Zone</span>    (EEZ) of waters and is normally obsolete once a boat enters the International, Territorial or Contiguous waters. Due
     to this fact, the service only spots boats that are in this <span class="cca-font--bold">EEZ</span> area.
-<br><br>
-    <div class='aboutDialog__footnotes cca-font--bold'>
+    </span>
+    <br><br>
+    <div class='aboutDialog__footnotes cca-font--bold' id="aboutDialog-desc-credits">
       Internet Donation is afloat online by Ronnie Karfiol.<br>Special thanks to Tamir Pomerantz and Eran Hadas.
     </div>
 
   </div>
   </div>
   <script src="https://cdn.rawgit.com/GoodBoyDigital/pixi.js/v1.6.1/bin/pixi.js"></script>
+  <script type="text/javascript" src="js/translations.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
+
 </body>
 
 </html>
