@@ -239,7 +239,7 @@ $(document).ready(function () {
         // Stretch background
         resize();
         // Filter
-        var displacementTexture = PIXI.Texture.fromImage("images/bump.png");
+        var displacementTexture = PIXI.Texture.fromImage("images/bump.jpg");
         displacementFilter = new PIXI.DisplacementFilter(displacementTexture);
         container.filters = [displacementFilter];
         requestAnimFrame(animate);
