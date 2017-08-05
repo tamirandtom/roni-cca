@@ -4,6 +4,8 @@ $(document).ready(function () {
     // Navigation
 
 
+    var RIGHT_ARROW_SRC = 'images/icons/ic_arrow_forward_black.svg'
+    var LEFT_ARROW_SRC = 'images/icons/ic_arrow_back_black.svg'
     function exitDialog() {
         $('#moreDialog').fadeOut(400);
     }
@@ -150,7 +152,7 @@ $(document).ready(function () {
 
     function switchLangToHeb() {
         $('.cca__modal-wrap, .cca__logo, .cca__alert__subtitle, .cca__alert__title, .cca__page__slider-subtitle, .cca__page__slider-title, .cca__language-switch').addClass('hebrew-font');
-        $('#backAboutDialog, #backDialog').html('arrow_forward')
+        $('#backAboutDialog, #backDialog').attr('src',RIGHT_ARROW_SRC)
         for (var key in translations) {
             if (translations.hasOwnProperty(key)) {
                 $('#' + key).html(translations[key].heb);
@@ -161,7 +163,7 @@ $(document).ready(function () {
 
     function switchLangToEng() {
         $('.cca__modal-wrap, .cca__logo, .cca__alert__subtitle, .cca__alert__title, .cca__page__slider-subtitle, .cca__page__slider-title, .cca__language-switch').removeClass('hebrew-font');
-        $('#backAboutDialog, #backDialog').html('arrow_back')
+        $('#backAboutDialog, #backDialog').attr('src',LEFT_ARROW_SRC)
         for (var key in translations) {
             if (translations.hasOwnProperty(key)) {
                 $('#' + key).html(translations[key].eng);

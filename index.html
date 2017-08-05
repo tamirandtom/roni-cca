@@ -18,7 +18,6 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:type" content="image/png" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <style>
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
@@ -145,8 +144,9 @@
       left: 30px;
     }
 
-    .cca__alert__icon i {
-      font-size: 40px;
+    .cca__alert__icon .cca-icons {
+      width: 40px;
+      height:40px;
       color: #212121;
     }
 
@@ -296,14 +296,14 @@
       line-height: 24px;
     }
 
-    h3 i {
+    h3 .cca-icons--expand {
       position: relative;
       top: 6px;
       transform: rotate(0deg);
       transition: all 0.2s ease-out;
     }
 
-    .cca__zippy--open i {
+    .cca__zippy--open .cca-icons--expand {
       transform: rotate(180deg);
     }
 
@@ -345,7 +345,7 @@
       display: none;
     }
 
-    .cca__language-switch i {
+    .cca__language-switch .cca-icons {
       position: relative;
       top: 6px;
     }
@@ -450,15 +450,15 @@
   <div class='cca__web-title cca-font--bold' id='main-title'>Internet donation</div>
   <div class="cca__language-switch">
 
-    <div class="cca__heb-button">עב <i class="material-icons">public</i></div>
-    <div class="cca__eng-button">En <i class="material-icons">public</i></div>
+    <div class="cca__heb-button">עב <img src='images/icons/ic_public_black.svg' class='cca-icons'></div>
+    <div class="cca__eng-button">En <img src='images/icons/ic_public_black.svg' class='cca-icons'></div>
   </div>
 
 
 
 
   <div class="cca__alert__wrap cca-surface" id="innitialAlert">
-    <div class="cca__alert__icon"><i class="material-icons">warning</i></div>
+    <div class="cca__alert__icon"><img src='images/icons/ic_warning_black.svg' class='cca-icons'></div>
     <div class="cca__alert__title cca-font--regular" id='alert-1-title'>A refugee ship was detected 26KM from Tel Aviv-Yafo, Israel</div>
     <div class="cca__alert__subtitle cca-font--regular">
        <span style="direction:ltr">32.<span id='randomizeNumbers1'>162</span>° N 34.<span id='randomizeNumbers2'>132</span>° W</span>
@@ -495,16 +495,16 @@
     </div>
   </div>
   <div class="cca__modal-wrap tmp-hide cca-surface" id="moreDialog">
-    <div class="cca__modal-back-button"><i class="material-icons" id="backDialog">arrow_back</i></div>
+    <div class="cca__modal-back-button"><img src='images/icons/ic_arrow_back_black.svg' id="backDialog" class='cca-icons'></div>
     <div class="cca__modal-content-unit-wrap">
-      <h3 class="cca__modal-title cca-font--bold"><span id='more-title-1'>Why do refugees need internet?</span> <i class="material-icons">expand_more</i></h3>
+      <h3 class="cca__modal-title cca-font--bold"><span id='more-title-1'>Why do refugees need internet?</span> <img src='images/icons/ic_expand_more_black.svg' class='cca-icons cca-icons--expand'></h3>
       <div class="cca__modal-conetnt cca-font--regular tmp-hide">
         <span id='more-content-1'>
         </span>
       </div>
     </div>
     <div class="cca__modal-content-unit-wrap">
-      <h3 class="cca__modal-title cca-font--bold"><span id='more-title-2'>What is an internet donation?</span> <i class="material-icons">expand_more</i></h3>
+      <h3 class="cca__modal-title cca-font--bold"><span id='more-title-2'>What is an internet donation?</span><img src='images/icons/ic_expand_more_black.svg' class='cca-icons cca-icons--expand'></h3>
       <div class="cca__modal-conetnt cca-font--regular tmp-hide">
         <span id='more-content-2'>
        
@@ -514,7 +514,7 @@
         <br>
       </div>
     </div> <div class="cca__modal-content-unit-wrap">
-      <h3 class="cca__modal-title cca-font--bold"><span id='more-title-3'>What is an internet donation?</span> <i class="material-icons">expand_more</i></h3>
+      <h3 class="cca__modal-title cca-font--bold"><span id='more-title-3'>What is an internet donation?</span><img src='images/icons/ic_expand_more_black.svg' class='cca-icons cca-icons--expand'></h3>
       <div class="cca__modal-conetnt cca-font--regular tmp-hide">
         <span id='more-content-3'>
        
@@ -527,7 +527,7 @@
 
   </div>
   <div class="cca__modal-wrap tmp-hide cca-surface cca-font--regular" id="aboutDialog">
-    <div class="cca__modal-back-button"><i class="material-icons" id="backAboutDialog">arrow_back</i></div>
+    <div class="cca__modal-back-button"><img id="backAboutDialog" src='images/icons/ic_arrow_back_black.svg' class='cca-icons'></div>
     <br><br>
     <span id='aboutDialog-desc' class='cca__modal-conetnt'>
     <span class="cca-font--bold">Internet Donation</span> is a website by the <span class="cca-font--bold">Relief & Monitoring</span>    non-governmental organization (NGO).<br> This new initiative can help you donate kilobytes per second (KBPS) for refugees
